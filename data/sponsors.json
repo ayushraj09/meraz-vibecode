@@ -1,0 +1,87 @@
+{
+  "sponsors": {
+    "titleSponsor": {
+      "name": "TechCorp Global",
+      "logo": "/sponsors/techcorp.png",
+      "website": "https://techcorp.example.com"
+    },
+    "titaniumSponsors": [
+      {
+        "name": "InnovateLabs",
+        "logo": "/sponsors/innovatelabs.png",
+        "website": "https://innovatelabs.example.com"
+      },
+      {
+        "name": "FutureTech Solutions",
+        "logo": "/sponsors/futuretech.png",
+        "website": "https://futuretech.example.com"
+      }
+    ],
+    "goldSponsors": [
+      {
+        "name": "CloudSync",
+        "logo": "/sponsors/cloudsync.png",
+        "website": "https://cloudsync.example.com"
+      },
+      {
+        "name": "DataDrive",
+        "logo": "/sponsors/datadrive.png",
+        "website": "https://datadrive.example.com"
+      },
+      {
+        "name": "CodeMasters",
+        "logo": "/sponsors/codemasters.png",
+        "website": "https://codemasters.example.com"
+      }
+    ],
+    "silverSponsors": [
+      {
+        "name": "ByteWorks",
+        "logo": "/sponsors/byteworks.png",
+        "website": "https://byteworks.example.com"
+      },
+      {
+        "name": "PixelPerfect",
+        "logo": "/sponsors/pixelperfect.png",
+        "website": "https://pixelperfect.example.com"
+      },
+      {
+        "name": "AppWizards",
+        "logo": "/sponsors/appwizards.png",
+        "website": "https://appwizards.example.com"
+      },
+      {
+        "name": "NetSphere",
+        "logo": "/sponsors/netsphere.png",
+        "website": "https://netsphere.example.com"
+      }
+    ],
+    "partners": [
+      {
+        "name": "EduTech India",
+        "logo": "/sponsors/edutech.png",
+        "website": "https://edutech.example.com"
+      },
+      {
+        "name": "StartupHub",
+        "logo": "/sponsors/startuphub.png",
+        "website": "https://startuphub.example.com"
+      },
+      {
+        "name": "Innovation Center",
+        "logo": "/sponsors/innovation.png",
+        "website": "https://innovation.example.com"
+      },
+      {
+        "name": "Tech Community",
+        "logo": "/sponsors/techcommunity.png",
+        "website": "https://techcommunity.example.com"
+      },
+      {
+        "name": "Digital Media",
+        "logo": "/sponsors/digitalmedia.png",
+        "website": "https://digitalmedia.example.com"
+      }
+    ]
+  }
+}
