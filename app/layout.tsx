@@ -14,21 +14,8 @@ export const metadata: Metadata = {
   description: 'Join us for MERAZ 2026, the annual cultural and technical festival of IIT Bhilai. Experience 3 days of stellar events, cosmic performances, and unforgettable memories.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/meraz-logo.png',
+    apple: '/meraz-logo.png',
   },
 }
 
