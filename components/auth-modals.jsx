@@ -14,39 +14,19 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
-import { Mail, Lock, User, Phone, School, MapPin, Calendar, CheckCircle2, XCircle, Check, Star, Sparkles } from "lucide-react"
+import { Mail, Lock, User, Phone, School, MapPin, Calendar } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
 import usersData from "@/data/users.json"
-import passesData from "@/data/passes.json"
 
 export default function AuthModals({ isOpen, onClose, defaultTab = "login" }) {
   const [activeTab, setActiveTab] = useState(defaultTab)
   const { toast } = useToast()
   const router = useRouter()
-  const [isPaymentLoading, setIsPaymentLoading] = useState(false)
-  const [paymentStatus, setPaymentStatus] = useState(null)
-  const [showPaymentDialog, setShowPaymentDialog] = useState(false)
-  const [selectedPass, setSelectedPass] = useState(null)
-  const [showPassSelection, setShowPassSelection] = useState(false)
 
   useEffect(() => {
-    const script = document.createElement("script")
-    script.src = "https://checkout.razorpay.com/v1/checkout.js"
-    script.async = true
-    script.onload = () => {
-      console.log("Razorpay SDK loaded successfully")
-    }
-    script.onerror = () => {
-      console.error("Failed to load Razorpay SDK")
-    }
-    document.body.appendChild(script)
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script)
-      }
-    }
-  }, [])
+    setActiveTab(defaultTab)
+  }, [defaultTab])
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -89,6 +69,33 @@ export default function AuthModals({ isOpen, onClose, defaultTab = "login" }) {
       return
     }
 
+    // Check if non-IIT Bhilai user has completed pass purchase
+    if (!user.email.endsWith('@iitbhilai.ac.in') && (!user.passType || !user.paymentId)) {
+      toast({
+        title: "Registration Incomplete",
+        description: "Please complete your pass purchase to access your account. Redirecting to passes page.",
+        variant: "destructive",
+      })
+      
+      // Store their login attempt data for pass purchase
+      sessionStorage.setItem("pendingRegistration", JSON.stringify({
+        name: user.name,
+        email: user.email,
+        phone: user.phone || "",
+        college: user.college || "",
+        city: user.city || "",
+        year: user.year || "",
+        password: user.password,
+        confirmPassword: user.password,
+      }))
+      
+      onClose()
+      setTimeout(() => {
+        router.push("/passes")
+      }, 1000)
+      return
+    }
+
     localStorage.setItem("user", JSON.stringify(user))
     
     toast({
@@ -103,133 +110,6 @@ export default function AuthModals({ isOpen, onClose, defaultTab = "login" }) {
       router.push("/dashboard")
       window.location.reload()
     }, 500)
-  }
-
-  const initiatePayment = async (pass) => {
-    setIsPaymentLoading(true)
-    
-    try {
-      if (!pass || !pass.price) {
-        console.error("Pass or price not provided:", pass)
-        toast({
-          title: "Error",
-          description: "Please select a valid pass",
-          variant: "destructive",
-        })
-        setIsPaymentLoading(false)
-        return
-      }
-      
-      const razorpayKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID
-      
-      // Check if Razorpay script is loaded
-      if (typeof window.Razorpay === 'undefined') {
-        console.error("Razorpay SDK not loaded")
-        toast({
-          title: "Payment Error",
-          description: "Payment gateway not initialized. Please refresh the page and try again.",
-          variant: "destructive",
-        })
-        setIsPaymentLoading(false)
-        return
-      }
-
-      console.log("Razorpay Key:", razorpayKey ? "Key Present" : "Using Test Key")
-      console.log("Selected Pass:", pass)
-      console.log("Payment Amount:", pass.price * 100)
-
-      const options = {
-        key: razorpayKey || "rzp_test_1DP5mmOlF5G5ag",
-        amount: pass.price * 100, // Convert to paise
-        currency: "INR",
-        name: "Festival Registration",
-        description: `${pass.name} - ${pass.description}`,
-        image: "/logo.png",
-        handler: async function (response) {
-          console.log("Payment Success:", response)
-          const newUser = {
-            id: Date.now(),
-            ...registerData,
-            passType: pass.name,
-            passPrice: pass.price,
-            paymentId: response.razorpay_payment_id,
-            registeredAt: new Date().toISOString(),
-            registeredEvents: []
-          }
-          
-          localStorage.setItem("user", JSON.stringify(newUser))
-          
-          setRegisterData({
-            name: "",
-            email: "",
-            phone: "",
-            college: "",
-            city: "",
-            year: "",
-            password: "",
-            confirmPassword: "",
-          })
-          
-          setIsPaymentLoading(false)
-          setShowPassSelection(false)
-          setSelectedPass(null)
-          setPaymentStatus('success')
-          setShowPaymentDialog(true)
-        },
-        prefill: {
-          name: registerData.name,
-          email: registerData.email,
-          contact: registerData.phone,
-        },
-        theme: {
-          color: "#8b5cf6",
-        },
-        modal: {
-          ondismiss: function() {
-            console.log("Payment modal dismissed")
-            setIsPaymentLoading(false)
-            setPaymentStatus('failed')
-            setShowPaymentDialog(true)
-          },
-          escape: false,
-          backdropclose: false
-        }
-      }
-
-      console.log("Initiating Razorpay with options:", options)
-      const rzp = new window.Razorpay(options)
-      
-      rzp.on('payment.failed', function (response) {
-        console.error("Payment Failed:", response)
-        setIsPaymentLoading(false)
-        setPaymentStatus('failed')
-        setShowPaymentDialog(true)
-      })
-      
-      rzp.open()
-    } catch (error) {
-      console.error("Payment Error:", error)
-      setIsPaymentLoading(false)
-      toast({
-        title: "Payment Error",
-        description: error.message || "Failed to initiate payment. Please try again.",
-        variant: "destructive",
-      })
-      setPaymentStatus('failed')
-      setShowPaymentDialog(true)
-    }
-  }
-
-  const handlePaymentDialogClose = () => {
-    setShowPaymentDialog(false)
-    if (paymentStatus === 'success') {
-      onClose()
-      setTimeout(() => {
-        router.push("/dashboard")
-        window.location.reload()
-      }, 300)
-    }
-    setPaymentStatus(null)
   }
 
   const handleRegister = (e) => {
@@ -272,7 +152,55 @@ export default function AuthModals({ isOpen, onClose, defaultTab = "login" }) {
       return
     }
 
-    initiatePayment()
+    // Check if user is from IIT Bhilai - free registration
+    if (registerData.email.endsWith('@iitbhilai.ac.in')) {
+      const newUser = {
+        id: Date.now(),
+        ...registerData,
+        passType: "Free Registration",
+        passPrice: 0,
+        registeredAt: new Date().toISOString(),
+        registeredEvents: [],
+        isIITBhilaiStudent: true
+      }
+      
+      localStorage.setItem("user", JSON.stringify(newUser))
+      
+      setRegisterData({
+        name: "",
+        email: "",
+        phone: "",
+        college: "",
+        city: "",
+        year: "",
+        password: "",
+        confirmPassword: "",
+      })
+      
+      toast({
+        title: "Registration Successful!",
+        description: `Welcome ${newUser.name}! Free registration completed.`,
+      })
+      
+      onClose()
+      setTimeout(() => {
+        router.push("/dashboard")
+        window.location.reload()
+      }, 500)
+    } else {
+      // Store registration data temporarily and redirect to passes page
+      sessionStorage.setItem("pendingRegistration", JSON.stringify(registerData))
+      
+      toast({
+        title: "Registration Details Saved",
+        description: "Please select a pass to complete your registration.",
+      })
+      
+      onClose()
+      setTimeout(() => {
+        router.push("/passes")
+      }, 500)
+    }
   }
 
   return (
@@ -488,9 +416,8 @@ export default function AuthModals({ isOpen, onClose, defaultTab = "login" }) {
                 <Button
                   type="submit"
                   className="w-full bg-[var(--galaxy-purple)] hover:bg-[var(--galaxy-purple)]/80 text-white"
-                  disabled={isPaymentLoading}
                 >
-                  {isPaymentLoading ? "Processing..." : registerData.email.endsWith('@iitbhilai.ac.in') ? "Register (Free)" : "Continue to Pass Selection"}
+                  {registerData.email.endsWith('@iitbhilai.ac.in') ? "Register (Free)" : "Continue to Pass Selection"}
                 </Button>
                 <p className="text-xs text-center text-muted-foreground mt-2">
                   {registerData.email.endsWith('@iitbhilai.ac.in') 
@@ -502,138 +429,6 @@ export default function AuthModals({ isOpen, onClose, defaultTab = "login" }) {
           </Tabs>
         </DialogContent>
       </Dialog>
-
-      {/* Pass Selection Dialog */}
-      <AlertDialog open={showPassSelection} onOpenChange={setShowPassSelection}>
-        <AlertDialogContent className="bg-[var(--galaxy-dark)] border-[var(--galaxy-purple)]/30 max-w-4xl">
-          <AlertDialogHeader>
-            <AlertDialogTitle className="text-center text-2xl gradient-text">
-              Select Your Festival Pass
-            </AlertDialogTitle>
-            <AlertDialogDescription className="text-center">
-              Choose the perfect pass for your cosmic journey
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          
-          <div className="grid md:grid-cols-3 gap-4 my-6">
-            {passesData.passes.map((pass) => {
-              const colorClasses = {
-                cyan: "border-[var(--galaxy-cyan)] hover:bg-[var(--galaxy-cyan)]/10",
-                purple: "border-[var(--galaxy-purple)] hover:bg-[var(--galaxy-purple)]/10",
-                gold: "border-[var(--galaxy-gold)] hover:bg-[var(--galaxy-gold)]/10",
-              }
-              const isSelected = selectedPass?.id === pass.id
-              
-              return (
-                <div
-                  key={pass.id}
-                  onClick={() => setSelectedPass(pass)}
-                  className={`relative cursor-pointer glass rounded-xl p-4 border-2 transition-all ${
-                    isSelected 
-                      ? `${colorClasses[pass.color]} ring-2 ring-offset-2 ring-offset-[var(--galaxy-dark)]` 
-                      : 'border-[var(--galaxy-purple)]/30 hover:border-[var(--galaxy-purple)]'
-                  }`}
-                >
-                  {isSelected && (
-                    <div className="absolute -top-2 -right-2">
-                      <CheckCircle2 className="h-6 w-6 text-green-500 bg-[var(--galaxy-dark)] rounded-full" />
-                    </div>
-                  )}
-                  
-                  <div className="text-center mb-3">
-                    <Sparkles className={`w-8 h-8 mx-auto mb-2 text-[var(--galaxy-${pass.color})]`} />
-                    <h3 className="text-lg font-bold text-foreground">{pass.name}</h3>
-                    <p className="text-xs text-muted-foreground">{pass.description}</p>
-                  </div>
-                  
-                  <div className="text-center mb-3">
-                    <div className="flex items-center justify-center gap-2">
-                      <span className="text-muted-foreground line-through text-sm">
-                        ₹{pass.originalPrice}
-                      </span>
-                      <span className={`text-2xl font-bold text-[var(--galaxy-${pass.color})]`}>
-                        ₹{pass.price}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <ul className="space-y-1 text-xs">
-                    {pass.features.slice(0, 3).map((feature, index) => (
-                      <li key={index} className="flex items-start gap-1">
-                        <Check className={`w-3 h-3 shrink-0 mt-0.5 text-[var(--galaxy-${pass.color})]`} />
-                        <span className="text-muted-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )
-            })}
-          </div>
-          
-          <AlertDialogFooter>
-            <Button
-              variant="outline"
-              onClick={() => {
-                setShowPassSelection(false)
-                setSelectedPass(null)
-              }}
-              className="border-[var(--galaxy-purple)]/30"
-            >
-              Cancel
-            </Button>
-            <Button
-              onClick={() => {
-                if (selectedPass) {
-                  completeRegistration(selectedPass)
-                } else {
-                  toast({
-                    title: "Please select a pass",
-                    description: "Choose a festival pass to continue",
-                    variant: "destructive",
-                  })
-                }
-              }}
-              disabled={!selectedPass || isPaymentLoading}
-              className="bg-[var(--galaxy-purple)] hover:bg-[var(--galaxy-purple)]/80 text-white"
-            >
-              {isPaymentLoading ? "Processing Payment..." : `Proceed to Payment (₹${selectedPass?.price || 0})`}
-            </Button>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-
-      {/* Payment Status Dialog */}
-      <AlertDialog open={showPaymentDialog} onOpenChange={setShowPaymentDialog}>
-        <AlertDialogContent className="bg-[var(--galaxy-dark)] border-[var(--galaxy-purple)]/30">
-          <AlertDialogHeader>
-            <div className="flex justify-center mb-4">
-              {paymentStatus === 'success' ? (
-                <CheckCircle2 className="h-16 w-16 text-green-500" />
-              ) : (
-                <XCircle className="h-16 w-16 text-red-500" />
-              )}
-            </div>
-            <AlertDialogTitle className="text-center text-2xl">
-              {paymentStatus === 'success' ? 'Payment Successful!' : 'Payment Failed'}
-            </AlertDialogTitle>
-            <AlertDialogDescription className="text-center">
-              {paymentStatus === 'success' 
-                ? 'Your registration is complete! Welcome to the festival. You will be redirected to your dashboard.' 
-                : 'Your payment could not be processed. Please try again or contact support if the issue persists.'}
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <Button
-              onClick={handlePaymentDialogClose}
-              className={paymentStatus === 'success' 
-                ? "bg-green-500 hover:bg-green-600 text-white w-full" 
-                : "bg-[var(--galaxy-purple)] hover:bg-[var(--galaxy-purple)]/80 text-white w-full"}
-            >
-              {paymentStatus === 'success' ? 'Go to Dashboard' : 'Try Again'}
-            </Button>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
     </>
   )
 }

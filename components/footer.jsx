@@ -1,7 +1,6 @@
 "use client"
 
 import { Sparkles, Mail, Phone, MapPin, Instagram, Twitter, Facebook, Youtube, Linkedin } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import siteData from "@/data/site.json"
 
@@ -30,26 +29,6 @@ export default function Footer() {
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[var(--galaxy-purple)] to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Newsletter CTA */}
-        <div className="glass rounded-2xl p-8 sm:p-12 mb-16 glow-border text-center">
-          <h3 className="text-2xl sm:text-3xl font-bold mb-4 gradient-text">
-            Stay in the Loop
-          </h3>
-          <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Subscribe to get updates on events, artists, and exclusive early bird offers.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-xl bg-[var(--galaxy-card)] border border-border focus:border-[var(--galaxy-purple)] focus:outline-none text-foreground placeholder:text-muted-foreground"
-            />
-            <Button className="bg-[var(--galaxy-purple)] hover:bg-[var(--galaxy-purple)]/80 text-white px-8">
-              Subscribe
-            </Button>
-          </div>
-        </div>
-
         {/* Footer content */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}

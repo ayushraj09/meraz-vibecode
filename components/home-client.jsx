@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import Header from "@/components/header"
 import Hero from "@/components/hero"
 import QuickLinks from "@/components/quick-links"
@@ -13,6 +14,15 @@ import AuthModals from "@/components/auth-modals"
 export default function HomePageClient() {
   const [authModalOpen, setAuthModalOpen] = useState(false)
   const [authTab, setAuthTab] = useState("login")
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    // Auto-open registration if redirected from passes page
+    if (searchParams.get('register') === 'true') {
+      setAuthTab('register')
+      setAuthModalOpen(true)
+    }
+  }, [searchParams])
 
   const openAuthModal = (tab = "register") => {
     setAuthTab(tab)

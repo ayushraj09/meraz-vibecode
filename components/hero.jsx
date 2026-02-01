@@ -62,6 +62,21 @@ function CountdownTimer({ targetDate }) {
 }
 
 export default function Hero({ onRegisterClick }) {
+  const [floatingStars, setFloatingStars] = useState([])
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    // Generate stars only on client side to avoid hydration mismatch
+    const stars = Array.from({ length: 20 }, (_, i) => ({
+      id: i,
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 3}s`,
+    }))
+    setFloatingStars(stars)
+    setMounted(true)
+  }, [])
+
   return (
     <section
       id="home"
@@ -76,14 +91,14 @@ export default function Hero({ onRegisterClick }) {
       <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-[var(--galaxy-pink)]/10 rounded-full blur-[80px] animate-float" style={{ animationDelay: "4s" }} />
 
       {/* Floating stars */}
-      {[...Array(20)].map((_, i) => (
+      {mounted && floatingStars.map((star) => (
         <div
-          key={i}
+          key={star.id}
           className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
           style={{
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 3}s`,
+            top: star.top,
+            left: star.left,
+            animationDelay: star.delay,
           }}
         />
       ))}

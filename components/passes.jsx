@@ -1,10 +1,13 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Check, Star, Sparkles } from "lucide-react"
+import { useToast } from "@/hooks/use-toast"
+import { useRouter } from "next/navigation"
 import passesData from "@/data/passes.json"
 
-function PassCard({ pass, onGetPass }) {
+function PassCard({ pass, onGetPass, showPurchaseButton = false }) {
   const colorClasses = {
     cyan: {
       border: "glow-border-cyan",
@@ -75,13 +78,135 @@ function PassCard({ pass, onGetPass }) {
         size="lg"
         onClick={() => onGetPass(pass)}
       >
-        Get {pass.name}
+        {showPurchaseButton ? `Purchase ${pass.name}` : `Get ${pass.name}`}
       </Button>
     </div>
   )
 }
 
-export default function Passes({ onRegisterClick }) {
+const initiatePayment = async (pass, registrationData, onComplete, toast, router) => {
+  
+  try {
+    if (!pass || !pass.price) {
+      toast({
+        title: "Error",
+        description: "Please select a valid pass",
+        variant: "destructive",
+      })
+      return
+    }
+
+    // Load Razorpay script if not already loaded
+    if (typeof window.Razorpay === 'undefined') {
+      const script = document.createElement("script")
+      script.src = "https://checkout.razorpay.com/v1/checkout.js"
+      script.async = true
+      document.body.appendChild(script)
+      
+      await new Promise((resolve, reject) => {
+        script.onload = resolve
+        script.onerror = reject
+      })
+    }
+    
+    const razorpayKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID
+    
+    const options = {
+      key: razorpayKey || "rzp_test_1DP5mmOlF5G5ag",
+      amount: pass.price * 100, // Convert to paise
+      currency: "INR",
+      name: "Festival Registration",
+      description: `${pass.name} - ${pass.description}`,
+      image: "/logo.png",
+      handler: async function (response) {
+        console.log("Payment Success:", response)
+        
+        // Complete user registration after successful payment
+        const newUser = {
+          id: Date.now(),
+          ...registrationData,
+          passType: pass.name,
+          passPrice: pass.price,
+          paymentId: response.razorpay_payment_id,
+          registeredAt: new Date().toISOString(),
+          registeredEvents: []
+        }
+        
+        localStorage.setItem("user", JSON.stringify(newUser))
+        
+        toast({
+          title: "Payment Successful!",
+          description: `Welcome ${newUser.name}! Your registration is complete.`,
+        })
+        
+        // Clear pending registration and callback
+        if (onComplete) onComplete()
+        
+        setTimeout(() => {
+          router.push("/dashboard")
+          window.location.reload()
+        }, 1000)
+      },
+      prefill: {
+        name: registrationData.name,
+        email: registrationData.email,
+        contact: registrationData.phone,
+      },
+      theme: {
+        color: "#8b5cf6",
+      },
+      modal: {
+        ondismiss: function() {
+          toast({
+            title: "Payment Cancelled",
+            description: "Payment was cancelled. Please try again to complete your registration.",
+            variant: "destructive",
+          })
+        },
+        escape: false,
+        backdropclose: false
+      }
+    }
+
+    const rzp = new window.Razorpay(options)
+    
+    rzp.on('payment.failed', function (response) {
+      console.error("Payment Failed:", response)
+      toast({
+        title: "Payment Failed",
+        description: "Payment could not be processed. Please try again.",
+        variant: "destructive",
+      })
+    })
+    
+    rzp.open()
+  } catch (error) {
+    console.error("Payment Error:", error)
+    toast({
+      title: "Payment Error",
+      description: error.message || "Failed to initiate payment. Please try again.",
+      variant: "destructive",
+    })
+  }
+}
+
+export default function Passes({ onRegisterClick, pendingRegistration, onRegistrationComplete }) {
+  const { toast } = useToast()
+  const router = useRouter()
+  
+  const handlePassPurchase = (pass) => {
+    if (pendingRegistration) {
+      // User came from registration, initiate payment
+      initiatePayment(pass, pendingRegistration, onRegistrationComplete, toast, router)
+    } else {
+      // Normal flow - prompt to register first
+      console.log("Selected pass:", pass)
+      if (onRegisterClick) {
+        onRegisterClick()
+      }
+    }
+  }
+
   return (
     <section id="passes" className="relative py-24 overflow-hidden">
       {/* Background */}
@@ -98,7 +223,10 @@ export default function Passes({ onRegisterClick }) {
             <span className="gradient-text">Festival Passes</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose the perfect pass for your cosmic journey. Early bird discounts available for a limited time!
+            {pendingRegistration 
+              ? `Welcome ${pendingRegistration.name}! Select your pass to complete registration and unlock your cosmic journey.`
+              : "Choose the perfect pass for your cosmic journey. Early bird discounts available for a limited time!"
+            }
           </p>
         </div>
 
@@ -108,12 +236,8 @@ export default function Passes({ onRegisterClick }) {
             <PassCard 
               key={pass.id} 
               pass={pass} 
-              onGetPass={(selectedPass) => {
-                console.log("Selected pass:", selectedPass)
-                if (onRegisterClick) {
-                  onRegisterClick()
-                }
-              }}
+              onGetPass={handlePassPurchase}
+              showPurchaseButton={!!pendingRegistration}
             />
           ))}
         </div>
@@ -125,6 +249,11 @@ export default function Passes({ onRegisterClick }) {
             <br />
             Accommodation assistance available for outstation participants.
           </p>
+          {pendingRegistration && (
+            <p className="text-[var(--galaxy-gold)] text-sm mt-4 font-medium">
+              Complete your payment to activate your festival account and access the dashboard.
+            </p>
+          )}
         </div>
       </div>
     </section>

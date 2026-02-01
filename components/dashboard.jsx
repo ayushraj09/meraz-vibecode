@@ -24,47 +24,25 @@ import {
 
 export default function Dashboard({ user }) {
   const router = useRouter()
+  const [registeredEvents, setRegisteredEvents] = useState([])
   
-  // Get registered events from user data or use mock data
-  const [registeredEvents, setRegisteredEvents] = useState(
-    user.registeredEvents && user.registeredEvents.length > 0 
-      ? user.registeredEvents 
-      : [
-          {
-            id: 1,
-            name: "Cosmic Dance Battle",
-            category: "Cultural",
-            date: "2024-03-15",
-            time: "14:00",
-            venue: "Main Stage",
-            status: "Confirmed",
-            rank: 3,
-            totalParticipants: 45
-          },
-          {
-            id: 2,
-            name: "Hackathon: Code the Galaxy",
-            category: "Technical",
-            date: "2024-03-16",
-            time: "09:00",
-            venue: "Innovation Hub",
-            status: "Confirmed",
-            rank: 12,
-            totalParticipants: 120
-          },
-          {
-            id: 3,
-            name: "Star Gazing Competition",
-            category: "Science",
-            date: "2024-03-17",
-            time: "20:00",
-            venue: "Observatory",
-            status: "Pending",
-            rank: null,
-            totalParticipants: 30
-          }
-        ]
-  )
+  useEffect(() => {
+    // Get registered events from user data
+    if (user.registeredEvents) {
+      setRegisteredEvents(user.registeredEvents)
+    }
+  }, [user])
+  
+  // Update user data when events change
+  useEffect(() => {
+    const userData = localStorage.getItem("user")
+    if (userData) {
+      const updatedUser = JSON.parse(userData)
+      if (updatedUser.registeredEvents) {
+        setRegisteredEvents(updatedUser.registeredEvents)
+      }
+    }
+  }, [])
 
   const handleLogout = () => {
     localStorage.removeItem("user")
@@ -251,46 +229,91 @@ export default function Dashboard({ user }) {
             </div>
 
             <div className="grid gap-4">
-              {registeredEvents.map((event) => (
-                <Card key={event.id} className="glass border-[var(--galaxy-purple)]/30 p-6 hover:border-[var(--galaxy-purple)] transition-all">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div className="flex-1">
-                      <div className="flex items-start gap-3 mb-3">
-                        <div className="flex-1">
-                          <h3 className="text-xl font-bold text-foreground mb-1">{event.name}</h3>
-                          <p className="text-sm text-muted-foreground">{event.category}</p>
+              {registeredEvents.length === 0 ? (
+                <Card className="glass border-[var(--galaxy-purple)]/30 p-8 text-center">
+                  <Trophy className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                  <h3 className="text-lg font-semibold mb-2">No Events Registered</h3>
+                  <p className="text-muted-foreground mb-4">
+                    You haven't registered for any events yet. Explore our events and register now!
+                  </p>
+                  <Button 
+                    onClick={() => router.push("/#events")}
+                    className="bg-[var(--galaxy-purple)] hover:bg-[var(--galaxy-purple)]/80"
+                  >
+                    Browse Events
+                  </Button>
+                </Card>
+              ) : (
+                registeredEvents.map((event) => (
+                  <Card key={event.eventId || event.id} className="glass border-[var(--galaxy-purple)]/30 p-6 hover:border-[var(--galaxy-purple)] transition-all">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                      <div className="flex-1">
+                        <div className="flex items-start justify-between mb-3">
+                          <div className="flex-1">
+                            <h3 className="text-xl font-bold text-foreground mb-1">{event.eventName}</h3>
+                            {event.teamName && (
+                              <p className="text-sm text-[var(--galaxy-purple)] font-medium mb-1">
+                                Team: {event.teamName}
+                              </p>
+                            )}
+                            <div className="flex items-center gap-4">
+                              <Badge variant="outline" className="text-sm">
+                                {event.teamMembers?.length === 1 ? 'Individual' : `Team (${event.teamMembers?.length || 1} members)`}
+                              </Badge>
+                              <span className="text-sm text-muted-foreground">
+                                {event.registrationFee === 0 ? 'Free Event' : `₹${event.registrationFee}`}
+                              </span>
+                            </div>
+                          </div>
+                          <Badge className="bg-green-500/20 text-green-400 border border-green-500/30">
+                            Registered
+                          </Badge>
                         </div>
-                        {getStatusBadge(event.status)}
-                      </div>
-                      
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-                        <div className="flex items-center gap-2">
-                          <Calendar className="h-4 w-4 text-[var(--galaxy-cyan)]" />
-                          <span className="text-muted-foreground">{event.date}</span>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                          <div className="flex items-center gap-2">
+                            <Calendar className="h-4 w-4 text-[var(--galaxy-cyan)]" />
+                            <span className="text-muted-foreground">
+                              {new Date(event.registeredAt).toLocaleDateString()}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <User className="h-4 w-4 text-[var(--galaxy-gold)]" />
+                            <span className="text-muted-foreground">
+                              {event.teamMembers?.[0]?.name || 'Team Leader'}
+                            </span>
+                          </div>
+                          {event.paymentId && (
+                            <div className="flex items-center gap-2">
+                              <Ticket className="h-4 w-4 text-[var(--galaxy-purple)]" />
+                              <span className="text-muted-foreground font-mono text-xs">
+                                {event.paymentId.substring(0, 12)}...
+                              </span>
+                            </div>
+                          )}
                         </div>
-                        <div className="flex items-center gap-2">
-                          <Clock className="h-4 w-4 text-[var(--galaxy-pink)]" />
-                          <span className="text-muted-foreground">{event.time}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <MapPin className="h-4 w-4 text-[var(--galaxy-purple)]" />
-                          <span className="text-muted-foreground">{event.venue}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <User className="h-4 w-4 text-[var(--galaxy-gold)]" />
-                          <span className="text-muted-foreground">{event.totalParticipants} participants</span>
-                        </div>
+
+                        {/* Team Members */}
+                        {event.teamMembers && event.teamMembers.length > 0 && (
+                          <div className="mt-4 p-3 bg-[var(--galaxy-purple)]/5 rounded-lg">
+                            <h4 className="text-sm font-medium mb-2">
+                              {event.teamMembers.length === 1 ? 'Participant:' : 'Team Members:'}
+                            </h4>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                              {event.teamMembers.map((member, index) => (
+                                <div key={index} className="text-sm">
+                                  <p className="text-foreground font-medium">{member.name}</p>
+                                  <p className="text-muted-foreground text-xs">{member.phone}</p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
-
-                    {event.rank && (
-                      <div className="md:ml-4">
-                        {getRankBadge(event.rank)}
-                      </div>
-                    )}
-                  </div>
-                </Card>
-              ))}
+                  </Card>
+                ))
+              )}
             </div>
           </TabsContent>
 
