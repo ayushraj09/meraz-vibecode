@@ -1,0 +1,36 @@
+{
+  "testimonials": [
+    {
+      "id": "1",
+      "name": "Ananya Krishnan",
+      "college": "IIT Bombay",
+      "year": "2025",
+      "quote": "Meraz was an absolutely mind-blowing experience! The galaxy theme made everything feel magical. Can't wait for 2026!",
+      "avatar": "/avatars/avatar1.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Rohan Mehta",
+      "college": "NIT Raipur",
+      "year": "2025",
+      "quote": "The technical events were top-notch. Competing in Code Wars pushed me to my limits. The atmosphere was electric!",
+      "avatar": "/avatars/avatar2.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Ishita Sharma",
+      "college": "BITS Pilani",
+      "year": "2025",
+      "quote": "From the cultural performances to the late-night jam sessions, every moment at Meraz was unforgettable. Pure cosmic energy!",
+      "avatar": "/avatars/avatar3.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Aditya Patel",
+      "college": "IIT Delhi",
+      "year": "2025",
+      "quote": "The organization was seamless and the events were incredibly well-planned. Meraz sets the benchmark for college fests!",
+      "avatar": "/avatars/avatar4.jpg"
+    }
+  ]
+}

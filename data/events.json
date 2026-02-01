@@ -1,0 +1,141 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "name": "Cosmic Code Wars",
+      "category": "Technical",
+      "description": "A high-stakes competitive programming contest where participants solve algorithmic challenges under time pressure. Battle through the cosmic code dimensions!",
+      "date": "March 15, 2026",
+      "time": "10:00 AM - 6:00 PM",
+      "venue": "Galaxy Hall A",
+      "contact": {
+        "name": "Arjun Sharma",
+        "phone": "+91 98765 43210",
+        "email": "arjun@meraz.iitbhilai.ac.in"
+      },
+      "image": "/events/code-wars.jpg",
+      "registrationLink": "#register",
+      "prizePool": "₹50,000"
+    },
+    {
+      "id": "2",
+      "name": "Nebula Beats",
+      "category": "Cultural",
+      "description": "The ultimate dance competition featuring solo and group performances. Let your moves create ripples across the nebula!",
+      "date": "March 16, 2026",
+      "time": "4:00 PM - 10:00 PM",
+      "venue": "Stellar Arena",
+      "contact": {
+        "name": "Priya Patel",
+        "phone": "+91 87654 32109",
+        "email": "priya@meraz.iitbhilai.ac.in"
+      },
+      "image": "/events/nebula-beats.jpg",
+      "registrationLink": "#register",
+      "prizePool": "₹75,000"
+    },
+    {
+      "id": "3",
+      "name": "Starlight Vocals",
+      "category": "Cultural",
+      "description": "Showcase your singing talent in this stellar vocal competition. From classical to contemporary, let your voice travel through the stars.",
+      "date": "March 15, 2026",
+      "time": "2:00 PM - 8:00 PM",
+      "venue": "Aurora Auditorium",
+      "contact": {
+        "name": "Rahul Verma",
+        "phone": "+91 76543 21098",
+        "email": "rahul@meraz.iitbhilai.ac.in"
+      },
+      "image": "/events/starlight-vocals.jpg",
+      "registrationLink": "#register",
+      "prizePool": "₹40,000"
+    },
+    {
+      "id": "4",
+      "name": "Quantum Quiz",
+      "category": "Technical",
+      "description": "Test your knowledge across science, technology, and general awareness. Navigate through quantum realms of questions!",
+      "date": "March 14, 2026",
+      "time": "11:00 AM - 3:00 PM",
+      "venue": "Cosmos Conference Room",
+      "contact": {
+        "name": "Sneha Gupta",
+        "phone": "+91 65432 10987",
+        "email": "sneha@meraz.iitbhilai.ac.in"
+      },
+      "image": "/events/quantum-quiz.jpg",
+      "registrationLink": "#register",
+      "prizePool": "₹30,000"
+    },
+    {
+      "id": "5",
+      "name": "Galactic Gaming",
+      "category": "Gaming",
+      "description": "Compete in popular esports titles including Valorant, CS2, and FIFA. Dominate the galactic gaming arena!",
+      "date": "March 14-16, 2026",
+      "time": "9:00 AM - 11:00 PM",
+      "venue": "Pixel Paradise",
+      "contact": {
+        "name": "Karan Singh",
+        "phone": "+91 54321 09876",
+        "email": "karan@meraz.iitbhilai.ac.in"
+      },
+      "image": "/events/galactic-gaming.jpg",
+      "registrationLink": "#register",
+      "prizePool": "₹1,00,000"
+    },
+    {
+      "id": "6",
+      "name": "Astro Robotics",
+      "category": "Technical",
+      "description": "Build and program robots to complete challenging space-themed missions. Engineer your way to victory!",
+      "date": "March 15-16, 2026",
+      "time": "10:00 AM - 6:00 PM",
+      "venue": "Innovation Hub",
+      "contact": {
+        "name": "Amit Kumar",
+        "phone": "+91 43210 98765",
+        "email": "amit@meraz.iitbhilai.ac.in"
+      },
+      "image": "/events/astro-robotics.jpg",
+      "registrationLink": "#register",
+      "prizePool": "₹60,000"
+    },
+    {
+      "id": "7",
+      "name": "Cosmic Canvas",
+      "category": "Cultural",
+      "description": "Express your artistic vision through painting, digital art, and installations. Create masterpieces inspired by the cosmos.",
+      "date": "March 14, 2026",
+      "time": "9:00 AM - 5:00 PM",
+      "venue": "Art Nebula",
+      "contact": {
+        "name": "Maya Joshi",
+        "phone": "+91 32109 87654",
+        "email": "maya@meraz.iitbhilai.ac.in"
+      },
+      "image": "/events/cosmic-canvas.jpg",
+      "registrationLink": "#register",
+      "prizePool": "₹25,000"
+    },
+    {
+      "id": "8",
+      "name": "Stellar Startup Pitch",
+      "category": "Technical",
+      "description": "Present your innovative startup ideas to a panel of industry experts and investors. Launch your dreams into orbit!",
+      "date": "March 16, 2026",
+      "time": "10:00 AM - 4:00 PM",
+      "venue": "Venture Deck",
+      "contact": {
+        "name": "Vikram Rao",
+        "phone": "+91 21098 76543",
+        "email": "vikram@meraz.iitbhilai.ac.in"
+      },
+      "image": "/events/stellar-pitch.jpg",
+      "registrationLink": "#register",
+      "prizePool": "₹1,50,000"
+    }
+  ],
+  "categories": ["All", "Technical", "Cultural", "Gaming"]
+}

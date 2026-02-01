@@ -1,0 +1,53 @@
+{
+  "festival": {
+    "name": "MERAZ",
+    "tagline": "Where Stars Align & Dreams Ignite",
+    "year": "2026",
+    "dates": "March 14-16, 2026",
+    "location": "IIT Bhilai, Chhattisgarh",
+    "targetDate": "2026-03-14T00:00:00"
+  },
+  "about": {
+    "title": "About Meraz",
+    "subtitle": "The Cosmic Celebration",
+    "description": "Meraz is the annual cultural and technical festival of the Indian Institute of Technology Bhilai. This year, we embark on a cosmic journey through the galaxy, bringing together the brightest minds and most talented artists from across the nation.",
+    "highlights": [
+      {
+        "title": "50+",
+        "subtitle": "Events"
+      },
+      {
+        "title": "10K+",
+        "subtitle": "Participants"
+      },
+      {
+        "title": "₹15L+",
+        "subtitle": "Prize Pool"
+      },
+      {
+        "title": "3",
+        "subtitle": "Days"
+      }
+    ]
+  },
+  "sponsors": [
+    { "name": "TechNova", "tier": "title" },
+    { "name": "StarLink Corp", "tier": "gold" },
+    { "name": "Cosmic Industries", "tier": "gold" },
+    { "name": "Nebula Tech", "tier": "silver" },
+    { "name": "Quantum Labs", "tier": "silver" },
+    { "name": "Galaxy Solutions", "tier": "bronze" }
+  ],
+  "socialLinks": {
+    "instagram": "https://instagram.com/meraz_iitbhilai",
+    "twitter": "https://twitter.com/meraz_iitbhilai",
+    "facebook": "https://facebook.com/meraz_iitbhilai",
+    "youtube": "https://youtube.com/meraz_iitbhilai",
+    "linkedin": "https://linkedin.com/company/meraz-iitbhilai"
+  },
+  "contact": {
+    "email": "meraz@iitbhilai.ac.in",
+    "phone": "+91 12345 67890",
+    "address": "IIT Bhilai, GEC Campus, Sejbahar, Raipur, Chhattisgarh - 492015"
+  }
+}

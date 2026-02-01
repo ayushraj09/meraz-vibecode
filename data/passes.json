@@ -1,0 +1,54 @@
+{
+  "passes": [
+    {
+      "id": "1",
+      "name": "Stellar Pass",
+      "price": 499,
+      "originalPrice": 799,
+      "description": "Basic access to all cultural events",
+      "features": [
+        "Access to all cultural events",
+        "Entry to main stage concerts",
+        "Food court access",
+        "Festival merchandise discount (10%)"
+      ],
+      "color": "cyan",
+      "popular": false
+    },
+    {
+      "id": "2",
+      "name": "Nebula Pass",
+      "price": 999,
+      "originalPrice": 1499,
+      "description": "Full access to cultural and technical events",
+      "features": [
+        "All Stellar Pass benefits",
+        "Access to all technical events",
+        "Gaming zone entry",
+        "Workshop participation",
+        "Festival merchandise discount (20%)",
+        "Priority seating at concerts"
+      ],
+      "color": "purple",
+      "popular": true
+    },
+    {
+      "id": "3",
+      "name": "Galaxy Pass",
+      "price": 1999,
+      "originalPrice": 2999,
+      "description": "VIP all-access pass with exclusive perks",
+      "features": [
+        "All Nebula Pass benefits",
+        "VIP lounge access",
+        "Meet & greet with artists",
+        "Exclusive backstage tour",
+        "Festival merchandise kit",
+        "Accommodation assistance",
+        "Dedicated support line"
+      ],
+      "color": "gold",
+      "popular": false
+    }
+  ]
+}
