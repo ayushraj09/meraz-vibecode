@@ -137,11 +137,11 @@ export default function Schedule() {
               <div key={slotIndex} className="relative">
                 {/* Time Header */}
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="flex-shrink-0 w-24 sm:w-28">
+                  <div className="flex-shrink-0 w-32 sm:w-36">
                     <div className="glass rounded-xl px-3 py-2 border border-[var(--galaxy-purple)]/30">
                       <div className="flex items-center gap-2">
                         <Clock className="w-4 h-4 text-[var(--galaxy-purple)]" />
-                        <span className="text-sm sm:text-base font-bold text-foreground">{slot.time}</span>
+                        <span className="text-sm sm:text-base font-bold text-foreground whitespace-nowrap">{slot.time}</span>
                       </div>
                     </div>
                   </div>
@@ -149,7 +149,7 @@ export default function Schedule() {
                 </div>
 
                 {/* Events Grid */}
-                <div className="ml-0 sm:ml-32 grid gap-3">
+                <div className="ml-0 sm:ml-40 grid gap-3">
                   {slot.events.length === 1 ? (
                     // Single event - full width
                     <div className="w-full">
@@ -172,35 +172,6 @@ export default function Schedule() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Legend */}
-        <div className="mt-12 glass rounded-2xl p-6 glow-border">
-          <h3 className="text-lg font-semibold text-foreground mb-4">Event Categories</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-            {[
-              { name: "Technical", category: "technical" },
-              { name: "Cultural", category: "cultural" },
-              { name: "Pronite", category: "pronite" },
-              { name: "Workshop", category: "workshop" },
-              { name: "Fine Arts", category: "fine arts" },
-              { name: "Literary", category: "literary" },
-              { name: "Gaming", category: "gaming" },
-              { name: "General", category: "general" },
-            ].map((item) => {
-              const style = getCategoryColor(item.category)
-              const Icon = style.icon
-              return (
-                <div
-                  key={item.category}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg ${style.bg} ${style.border} border`}
-                >
-                  <Icon className={`w-4 h-4 ${style.text}`} />
-                  <span className="text-sm text-foreground">{item.name}</span>
-                </div>
-              )
-            })}
           </div>
         </div>
 

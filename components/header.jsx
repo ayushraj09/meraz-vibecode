@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Menu, X, Sparkles, User, LogOut } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 import siteData from "@/data/site.json"
 
 export default function Header({ onOpenAuth }) {
@@ -50,8 +51,14 @@ export default function Header({ onOpenAuth }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <Sparkles className="w-6 h-6 text-[var(--galaxy-purple)] group-hover:text-[var(--galaxy-cyan)] transition-colors" />
+          <Link href="/" className="flex items-center gap-3 group">
+            <Image 
+              src="/meraz-logo.png" 
+              alt="Meraz Logo" 
+              width={40} 
+              height={40} 
+              className="w-8 h-8 md:w-10 md:h-10 transition-transform group-hover:scale-110"
+            />
             <span className="text-xl md:text-2xl font-bold gradient-text">
               {siteData.festival.name}
             </span>
