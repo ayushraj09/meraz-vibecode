@@ -21,7 +21,7 @@ export default function PassesPage() {
       <StarField />
       <Header onOpenAuth={openAuthModal} />
       <div className="pt-20">
-        <Passes />
+        <Passes onRegisterClick={() => openAuthModal("register")} />
       </div>
       <Footer />
       <AuthModals 

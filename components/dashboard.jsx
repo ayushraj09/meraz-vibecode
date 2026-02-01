@@ -25,42 +25,46 @@ import {
 export default function Dashboard({ user }) {
   const router = useRouter()
   
-  // Mock registered events data
-  const [registeredEvents, setRegisteredEvents] = useState([
-    {
-      id: 1,
-      name: "Cosmic Dance Battle",
-      category: "Cultural",
-      date: "2024-03-15",
-      time: "14:00",
-      venue: "Main Stage",
-      status: "Confirmed",
-      rank: 3,
-      totalParticipants: 45
-    },
-    {
-      id: 2,
-      name: "Hackathon: Code the Galaxy",
-      category: "Technical",
-      date: "2024-03-16",
-      time: "09:00",
-      venue: "Innovation Hub",
-      status: "Confirmed",
-      rank: 12,
-      totalParticipants: 120
-    },
-    {
-      id: 3,
-      name: "Star Gazing Competition",
-      category: "Science",
-      date: "2024-03-17",
-      time: "20:00",
-      venue: "Observatory",
-      status: "Pending",
-      rank: null,
-      totalParticipants: 30
-    }
-  ])
+  // Get registered events from user data or use mock data
+  const [registeredEvents, setRegisteredEvents] = useState(
+    user.registeredEvents && user.registeredEvents.length > 0 
+      ? user.registeredEvents 
+      : [
+          {
+            id: 1,
+            name: "Cosmic Dance Battle",
+            category: "Cultural",
+            date: "2024-03-15",
+            time: "14:00",
+            venue: "Main Stage",
+            status: "Confirmed",
+            rank: 3,
+            totalParticipants: 45
+          },
+          {
+            id: 2,
+            name: "Hackathon: Code the Galaxy",
+            category: "Technical",
+            date: "2024-03-16",
+            time: "09:00",
+            venue: "Innovation Hub",
+            status: "Confirmed",
+            rank: 12,
+            totalParticipants: 120
+          },
+          {
+            id: 3,
+            name: "Star Gazing Competition",
+            category: "Science",
+            date: "2024-03-17",
+            time: "20:00",
+            venue: "Observatory",
+            status: "Pending",
+            rank: null,
+            totalParticipants: 30
+          }
+        ]
+  )
 
   const handleLogout = () => {
     localStorage.removeItem("user")

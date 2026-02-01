@@ -1,0 +1,112 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Raj Kumar",
+      "email": "raj@example.com",
+      "password": "password123",
+      "phone": "+91 98765 43210",
+      "college": "IIT Bhilai",
+      "city": "Bhilai",
+      "year": "3rd Year",
+      "paymentId": "pay_MxRjKWZ9vN8qLp",
+      "registeredAt": "2024-03-01T10:30:00.000Z",
+      "registeredEvents": [
+        {
+          "id": 1,
+          "name": "Cosmic Dance Battle",
+          "category": "Cultural",
+          "date": "2024-03-15",
+          "time": "14:00",
+          "venue": "Main Stage",
+          "status": "Confirmed",
+          "rank": 3,
+          "totalParticipants": 45
+        },
+        {
+          "id": 2,
+          "name": "Hackathon: Code the Galaxy",
+          "category": "Technical",
+          "date": "2024-03-16",
+          "time": "09:00",
+          "venue": "Innovation Hub",
+          "status": "Confirmed",
+          "rank": 12,
+          "totalParticipants": 120
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Priya Sharma",
+      "email": "priya@example.com",
+      "password": "password123",
+      "phone": "+91 98765 43211",
+      "college": "NIT Raipur",
+      "city": "Raipur",
+      "year": "2nd Year",
+      "paymentId": "pay_NyRjKWZ9vN8qLq",
+      "registeredAt": "2024-03-02T11:45:00.000Z",
+      "registeredEvents": [
+        {
+          "id": 3,
+          "name": "Star Gazing Competition",
+          "category": "Science",
+          "date": "2024-03-17",
+          "time": "20:00",
+          "venue": "Observatory",
+          "status": "Confirmed",
+          "rank": 1,
+          "totalParticipants": 30
+        },
+        {
+          "id": 4,
+          "name": "Photography Contest",
+          "category": "Cultural",
+          "date": "2024-03-18",
+          "time": "10:00",
+          "venue": "Art Gallery",
+          "status": "Confirmed",
+          "rank": 5,
+          "totalParticipants": 60
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Arjun Patel",
+      "email": "arjun@example.com",
+      "password": "password123",
+      "phone": "+91 98765 43212",
+      "college": "IIIT Naya Raipur",
+      "city": "Naya Raipur",
+      "year": "4th Year",
+      "paymentId": "pay_OzRjKWZ9vN8qLr",
+      "registeredAt": "2024-03-03T14:20:00.000Z",
+      "registeredEvents": [
+        {
+          "id": 2,
+          "name": "Hackathon: Code the Galaxy",
+          "category": "Technical",
+          "date": "2024-03-16",
+          "time": "09:00",
+          "venue": "Innovation Hub",
+          "status": "Confirmed",
+          "rank": 1,
+          "totalParticipants": 120
+        },
+        {
+          "id": 5,
+          "name": "Robotics Challenge",
+          "category": "Technical",
+          "date": "2024-03-19",
+          "time": "11:00",
+          "venue": "Tech Arena",
+          "status": "Confirmed",
+          "rank": 2,
+          "totalParticipants": 80
+        }
+      ]
+    }
+  ]
+}

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Check, Star, Sparkles } from "lucide-react"
 import passesData from "@/data/passes.json"
 
-function PassCard({ pass }) {
+function PassCard({ pass, onGetPass }) {
   const colorClasses = {
     cyan: {
       border: "glow-border-cyan",
@@ -73,6 +73,7 @@ function PassCard({ pass }) {
       <Button
         className={`w-full ${colors.button} text-white font-semibold`}
         size="lg"
+        onClick={() => onGetPass(pass)}
       >
         Get {pass.name}
       </Button>
@@ -80,7 +81,7 @@ function PassCard({ pass }) {
   )
 }
 
-export default function Passes() {
+export default function Passes({ onRegisterClick }) {
   return (
     <section id="passes" className="relative py-24 overflow-hidden">
       {/* Background */}
@@ -104,7 +105,16 @@ export default function Passes() {
         {/* Passes grid */}
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {passesData.passes.map((pass) => (
-            <PassCard key={pass.id} pass={pass} />
+            <PassCard 
+              key={pass.id} 
+              pass={pass} 
+              onGetPass={(selectedPass) => {
+                console.log("Selected pass:", selectedPass)
+                if (onRegisterClick) {
+                  onRegisterClick()
+                }
+              }}
+            />
           ))}
         </div>
 
