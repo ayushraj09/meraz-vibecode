@@ -2,6 +2,7 @@
   "festival": {
     "name": "MERAZ",
     "tagline": "Where Stars Align & Dreams Ignite",
+    "subtitle": "Central India's Largest Annual Techno Cultural Fest",
     "year": "2026",
     "dates": "March 14-16, 2026",
     "location": "IIT Bhilai, Chhattisgarh",
@@ -48,6 +49,6 @@
   "contact": {
     "email": "meraz@iitbhilai.ac.in",
     "phone": "+91 12345 67890",
-    "address": "IIT Bhilai, GEC Campus, Sejbahar, Raipur, Chhattisgarh - 492015"
+    "address": "IIT Bhilai, Kutelabhata, Durg, Chhattisgarh, India - 491002"
   }
 }

@@ -15,7 +15,10 @@
       },
       "image": "/events/code-wars.jpg",
       "registrationLink": "#register",
-      "prizePool": "₹50,000"
+      "prizePool": "₹50,000",
+      "registrationFee": 50,
+      "teamSize": "individual",
+      "requiredFields": ["name", "email", "phone", "college", "year"]
     },
     {
       "id": "2",
@@ -32,7 +35,11 @@
       },
       "image": "/events/nebula-beats.jpg",
       "registrationLink": "#register",
-      "prizePool": "₹75,000"
+      "prizePool": "₹75,000",
+      "registrationFee": 0,
+      "teamSize": "2-4",
+      "requiredFields": ["name", "email", "phone", "college"],
+      "optionalFields": ["year", "experience"]
     },
     {
       "id": "3",
@@ -49,7 +56,11 @@
       },
       "image": "/events/starlight-vocals.jpg",
       "registrationLink": "#register",
-      "prizePool": "₹40,000"
+      "prizePool": "₹40,000",
+      "registrationFee": 0,
+      "teamSize": "individual",
+      "requiredFields": ["name", "email", "phone"],
+      "optionalFields": ["college", "year", "experience"]
     },
     {
       "id": "4",
@@ -66,7 +77,11 @@
       },
       "image": "/events/quantum-quiz.jpg",
       "registrationLink": "#register",
-      "prizePool": "₹30,000"
+      "prizePool": "₹30,000",
+      "registrationFee": 25,
+      "teamSize": "2-4",
+      "requiredFields": ["name", "email", "phone", "college"],
+      "optionalFields": ["year"]
     },
     {
       "id": "5",
@@ -83,7 +98,11 @@
       },
       "image": "/events/galactic-gaming.jpg",
       "registrationLink": "#register",
-      "prizePool": "₹1,00,000"
+      "prizePool": "₹1,00,000",
+      "registrationFee": 100,
+      "teamSize": "2-4",
+      "requiredFields": ["name", "email", "phone", "gamingId"],
+      "optionalFields": ["college", "year", "experience"]
     },
     {
       "id": "6",
@@ -100,7 +119,11 @@
       },
       "image": "/events/astro-robotics.jpg",
       "registrationLink": "#register",
-      "prizePool": "₹60,000"
+      "prizePool": "₹60,000",
+      "registrationFee": 75,
+      "teamSize": "2-4",
+      "requiredFields": ["name", "email", "phone", "college", "year"],
+      "optionalFields": ["experience", "previousProjects"]
     },
     {
       "id": "7",
@@ -117,7 +140,11 @@
       },
       "image": "/events/cosmic-canvas.jpg",
       "registrationLink": "#register",
-      "prizePool": "₹25,000"
+      "prizePool": "₹25,000",
+      "registrationFee": 0,
+      "teamSize": "individual",
+      "requiredFields": ["name", "email", "phone"],
+      "optionalFields": ["college", "year", "artStyle", "portfolio"]
     },
     {
       "id": "8",
@@ -134,7 +161,11 @@
       },
       "image": "/events/stellar-pitch.jpg",
       "registrationLink": "#register",
-      "prizePool": "₹1,50,000"
+      "prizePool": "₹1,50,000",
+      "registrationFee": 50,
+      "teamSize": "2-4",
+      "requiredFields": ["name", "email", "phone", "college", "startupIdea"],
+      "optionalFields": ["year", "experience", "linkedIn"]
     }
   ],
   "categories": ["All", "Technical", "Cultural", "Gaming"]

@@ -1,0 +1,18 @@
+# MERAZ Chatbot Requirements
+# Install with: pip install -r requirements.txt
+
+# Vector Database
+chromadb>=0.4.0
+sentence-transformers>=2.2.0
+
+# Together API (choose one)
+together>=1.0.0  # Official SDK (recommended)
+# OR use requests if you prefer direct API calls
+requests>=2.28.0
+
+# Other dependencies
+numpy>=1.24.0
+torch>=2.0.0  # Required by sentence-transformers
+
+# Optional but recommended
+python-dotenv>=1.0.0  # For managing API keys
