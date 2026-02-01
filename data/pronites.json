@@ -1,0 +1,147 @@
+{
+  "title": "Pronites",
+  "subtitle": "Star-Studded Nights",
+  "description": "Experience three nights of electrifying performances from top artists across the country. Get ready for the musical journey of a lifetime!",
+  "nights": [
+    {
+      "day": "Day 1",
+      "date": "March 21, 2026",
+      "theme": "Rock & EDM Fusion",
+      "performers": [
+        {
+          "name": "The Local Train",
+          "type": "Band",
+          "image": "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=800&h=800&fit=crop",
+          "description": "India's leading indie rock band bringing their chart-topping hits",
+          "genre": "Indie Rock",
+          "time": "7:00 PM - 8:30 PM",
+          "featured": true,
+          "social": {
+            "instagram": "@thelocaltrain",
+            "spotify": "The Local Train"
+          }
+        },
+        {
+          "name": "DJ Nucleya",
+          "type": "DJ",
+          "image": "https://images.unsplash.com/photo-1571266028243-d220c6e87733?w=800&h=800&fit=crop",
+          "description": "Bass music pioneer taking you on a high-energy journey",
+          "genre": "Bass / EDM",
+          "time": "8:45 PM - 10:00 PM",
+          "featured": true,
+          "social": {
+            "instagram": "@nucleya",
+            "spotify": "Nucleya"
+          }
+        },
+        {
+          "name": "Ritviz",
+          "type": "DJ/Producer",
+          "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=800&fit=crop",
+          "description": "Electronic music sensation with melodic beats",
+          "genre": "Electronic / Dance",
+          "time": "10:15 PM - 11:30 PM",
+          "featured": false,
+          "social": {
+            "instagram": "@ritviz",
+            "spotify": "Ritviz"
+          }
+        }
+      ]
+    },
+    {
+      "day": "Day 2",
+      "date": "March 22, 2026",
+      "theme": "Bollywood Extravaganza",
+      "performers": [
+        {
+          "name": "Neha Kakkar",
+          "type": "Singer",
+          "image": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=800&h=800&fit=crop",
+          "description": "Bollywood's sensation performing her superhit songs live",
+          "genre": "Bollywood / Pop",
+          "time": "7:00 PM - 8:30 PM",
+          "featured": true,
+          "social": {
+            "instagram": "@nehakakkar",
+            "spotify": "Neha Kakkar"
+          }
+        },
+        {
+          "name": "Darshan Raval",
+          "type": "Singer",
+          "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop",
+          "description": "Youth icon with romantic melodies and powerful vocals",
+          "genre": "Bollywood / Indie",
+          "time": "8:45 PM - 10:00 PM",
+          "featured": true,
+          "social": {
+            "instagram": "@darshanravaldz",
+            "spotify": "Darshan Raval"
+          }
+        },
+        {
+          "name": "DJ Chetas",
+          "type": "DJ",
+          "image": "https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=800&h=800&fit=crop",
+          "description": "Bollywood remix king closing the night with bangers",
+          "genre": "Bollywood Remix",
+          "time": "10:15 PM - 11:30 PM",
+          "featured": false,
+          "social": {
+            "instagram": "@djchetas",
+            "spotify": "DJ Chetas"
+          }
+        }
+      ]
+    },
+    {
+      "day": "Day 3",
+      "date": "March 23, 2026",
+      "theme": "EDM Spectacular",
+      "performers": [
+        {
+          "name": "KSHMR",
+          "type": "DJ/Producer",
+          "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&h=800&fit=crop",
+          "description": "International DJ sensation bringing the biggest EDM party",
+          "genre": "EDM / Progressive House",
+          "time": "7:00 PM - 8:45 PM",
+          "featured": true,
+          "social": {
+            "instagram": "@kshmr",
+            "spotify": "KSHMR"
+          }
+        },
+        {
+          "name": "Lost Stories",
+          "type": "DJ Duo",
+          "image": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&h=800&fit=crop",
+          "description": "India's progressive house pioneers with festival anthems",
+          "genre": "Progressive House",
+          "time": "9:00 PM - 10:15 PM",
+          "featured": true,
+          "social": {
+            "instagram": "@weareloststories",
+            "spotify": "Lost Stories"
+          }
+        },
+        {
+          "name": "Zaeden",
+          "type": "DJ/Producer",
+          "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=800&fit=crop",
+          "description": "Multi-genre artist closing with an explosive set",
+          "genre": "Electronic / Pop",
+          "time": "10:30 PM - 11:45 PM",
+          "featured": false,
+          "social": {
+            "instagram": "@zaeden",
+            "spotify": "Zaeden"
+          }
+        }
+      ]
+    }
+  ],
+  "venue": "Main Arena, IIT Bhilai",
+  "timing": "7:00 PM - 12:00 AM"
+}

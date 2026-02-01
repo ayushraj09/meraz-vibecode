@@ -1,0 +1,469 @@
+{
+  "title": "Festival Schedule",
+  "subtitle": "Three Days of Cosmic Celebration",
+  "description": "Plan your festival journey with our detailed schedule. Multiple events happening simultaneously across different venues!",
+  "days": [
+    {
+      "day": "Day 1",
+      "date": "March 21, 2026",
+      "dayOfWeek": "Saturday",
+      "timeSlots": [
+        {
+          "time": "09:00 AM",
+          "events": [
+            {
+              "title": "Registration & Welcome",
+              "category": "General",
+              "venue": "Main Gate",
+              "duration": "2 hours",
+              "endTime": "11:00 AM"
+            }
+          ]
+        },
+        {
+          "time": "10:00 AM",
+          "events": [
+            {
+              "title": "Hackathon Begins",
+              "category": "Technical",
+              "venue": "Tech Lab A",
+              "duration": "24 hours",
+              "endTime": "10:00 AM (Next Day)"
+            },
+            {
+              "title": "Coding Sprint - Round 1",
+              "category": "Technical",
+              "venue": "Computer Lab 1",
+              "duration": "3 hours",
+              "endTime": "01:00 PM"
+            },
+            {
+              "title": "AI Workshop",
+              "category": "Workshop",
+              "venue": "Seminar Hall A",
+              "duration": "2 hours",
+              "endTime": "12:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "11:00 AM",
+          "events": [
+            {
+              "title": "Robotics Competition - Round 1",
+              "category": "Technical",
+              "venue": "Robotics Arena",
+              "duration": "4 hours",
+              "endTime": "03:00 PM"
+            },
+            {
+              "title": "Dance Auditions",
+              "category": "Cultural",
+              "venue": "Auditorium",
+              "duration": "4 hours",
+              "endTime": "03:00 PM"
+            },
+            {
+              "title": "Photography Walk",
+              "category": "Fine Arts",
+              "venue": "Campus Wide",
+              "duration": "3 hours",
+              "endTime": "02:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "12:00 PM",
+          "events": [
+            {
+              "title": "Singing Competition - Prelims",
+              "category": "Cultural",
+              "venue": "Music Room",
+              "duration": "3 hours",
+              "endTime": "03:00 PM"
+            },
+            {
+              "title": "Web Dev Workshop",
+              "category": "Workshop",
+              "venue": "Lab 3",
+              "duration": "2 hours",
+              "endTime": "02:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "02:00 PM",
+          "events": [
+            {
+              "title": "E-Sports: BGMI",
+              "category": "Gaming",
+              "venue": "Gaming Zone A",
+              "duration": "4 hours",
+              "endTime": "06:00 PM"
+            },
+            {
+              "title": "Debate Competition",
+              "category": "Literary",
+              "venue": "Seminar Hall B",
+              "duration": "3 hours",
+              "endTime": "05:00 PM"
+            },
+            {
+              "title": "Street Play Auditions",
+              "category": "Cultural",
+              "venue": "Open Theatre",
+              "duration": "2 hours",
+              "endTime": "04:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "03:00 PM",
+          "events": [
+            {
+              "title": "Fashion Show Auditions",
+              "category": "Cultural",
+              "venue": "Main Stage",
+              "duration": "3 hours",
+              "endTime": "06:00 PM"
+            },
+            {
+              "title": "Circuit Design Challenge",
+              "category": "Technical",
+              "venue": "Electronics Lab",
+              "duration": "3 hours",
+              "endTime": "06:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "05:00 PM",
+          "events": [
+            {
+              "title": "Inauguration Ceremony",
+              "category": "General",
+              "venue": "Main Arena",
+              "duration": "2 hours",
+              "endTime": "07:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "07:00 PM",
+          "events": [
+            {
+              "title": "Rock & EDM Fusion Night",
+              "category": "Pronite",
+              "venue": "Main Arena",
+              "duration": "5 hours",
+              "endTime": "12:00 AM",
+              "featured": true,
+              "artists": "The Local Train, DJ Nucleya, Ritviz"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Day 2",
+      "date": "March 22, 2026",
+      "dayOfWeek": "Sunday",
+      "timeSlots": [
+        {
+          "time": "09:00 AM",
+          "events": [
+            {
+              "title": "ML/DL Workshop",
+              "category": "Workshop",
+              "venue": "Seminar Hall A",
+              "duration": "3 hours",
+              "endTime": "12:00 PM"
+            },
+            {
+              "title": "Poetry Slam",
+              "category": "Literary",
+              "venue": "Open Stage",
+              "duration": "2 hours",
+              "endTime": "11:00 AM"
+            }
+          ]
+        },
+        {
+          "time": "10:00 AM",
+          "events": [
+            {
+              "title": "Coding Sprint - Finals",
+              "category": "Technical",
+              "venue": "Computer Lab 1",
+              "duration": "4 hours",
+              "endTime": "02:00 PM"
+            },
+            {
+              "title": "Singing Competition - Semi Finals",
+              "category": "Cultural",
+              "venue": "Auditorium A",
+              "duration": "4 hours",
+              "endTime": "02:00 PM"
+            },
+            {
+              "title": "Sketching Competition",
+              "category": "Fine Arts",
+              "venue": "Art Room",
+              "duration": "3 hours",
+              "endTime": "01:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "11:00 AM",
+          "events": [
+            {
+              "title": "Robotics - Semi Finals",
+              "category": "Technical",
+              "venue": "Robotics Arena",
+              "duration": "4 hours",
+              "endTime": "03:00 PM"
+            },
+            {
+              "title": "Dance - Semi Finals",
+              "category": "Cultural",
+              "venue": "Main Stage",
+              "duration": "4 hours",
+              "endTime": "03:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "12:00 PM",
+          "events": [
+            {
+              "title": "Startup Pitch Competition",
+              "category": "Technical",
+              "venue": "Conference Hall",
+              "duration": "3 hours",
+              "endTime": "03:00 PM"
+            },
+            {
+              "title": "Standup Comedy",
+              "category": "Cultural",
+              "venue": "Auditorium B",
+              "duration": "2 hours",
+              "endTime": "02:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "02:00 PM",
+          "events": [
+            {
+              "title": "E-Sports: Valorant",
+              "category": "Gaming",
+              "venue": "Gaming Zone B",
+              "duration": "4 hours",
+              "endTime": "06:00 PM"
+            },
+            {
+              "title": "Quiz Competition",
+              "category": "Literary",
+              "venue": "Seminar Hall C",
+              "duration": "2 hours",
+              "endTime": "04:00 PM"
+            },
+            {
+              "title": "Beat Boxing Battle",
+              "category": "Cultural",
+              "venue": "Music Arena",
+              "duration": "2 hours",
+              "endTime": "04:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "03:00 PM",
+          "events": [
+            {
+              "title": "Street Play - Finals",
+              "category": "Cultural",
+              "venue": "Open Theatre",
+              "duration": "2 hours",
+              "endTime": "05:00 PM"
+            },
+            {
+              "title": "3D Modeling Competition",
+              "category": "Technical",
+              "venue": "Design Lab",
+              "duration": "3 hours",
+              "endTime": "06:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "05:00 PM",
+          "events": [
+            {
+              "title": "Cultural Showcase",
+              "category": "General",
+              "venue": "Main Arena",
+              "duration": "2 hours",
+              "endTime": "07:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "07:00 PM",
+          "events": [
+            {
+              "title": "Bollywood Extravaganza",
+              "category": "Pronite",
+              "venue": "Main Arena",
+              "duration": "5 hours",
+              "endTime": "12:00 AM",
+              "featured": true,
+              "artists": "Neha Kakkar, Darshan Raval, DJ Chetas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Day 3",
+      "date": "March 23, 2026",
+      "dayOfWeek": "Monday",
+      "timeSlots": [
+        {
+          "time": "09:00 AM",
+          "events": [
+            {
+              "title": "Panel: Future of Technology",
+              "category": "Talk",
+              "venue": "Main Auditorium",
+              "duration": "2 hours",
+              "endTime": "11:00 AM"
+            },
+            {
+              "title": "Art Exhibition Opening",
+              "category": "Fine Arts",
+              "venue": "Exhibition Hall",
+              "duration": "8 hours",
+              "endTime": "05:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "10:00 AM",
+          "events": [
+            {
+              "title": "Hackathon - Final Presentations",
+              "category": "Technical",
+              "venue": "Tech Lab A",
+              "duration": "4 hours",
+              "endTime": "02:00 PM"
+            },
+            {
+              "title": "Singing - Finals",
+              "category": "Cultural",
+              "venue": "Auditorium A",
+              "duration": "3 hours",
+              "endTime": "01:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "11:00 AM",
+          "events": [
+            {
+              "title": "Robotics - Grand Finals",
+              "category": "Technical",
+              "venue": "Robotics Arena",
+              "duration": "3 hours",
+              "endTime": "02:00 PM"
+            },
+            {
+              "title": "Mad Ads",
+              "category": "Cultural",
+              "venue": "Seminar Hall",
+              "duration": "2 hours",
+              "endTime": "01:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "12:00 PM",
+          "events": [
+            {
+              "title": "Dance - Grand Finals",
+              "category": "Cultural",
+              "venue": "Main Stage",
+              "duration": "3 hours",
+              "endTime": "03:00 PM"
+            },
+            {
+              "title": "CTF Competition",
+              "category": "Technical",
+              "venue": "Cyber Lab",
+              "duration": "4 hours",
+              "endTime": "04:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "02:00 PM",
+          "events": [
+            {
+              "title": "Band Competition - Finals",
+              "category": "Cultural",
+              "venue": "Music Arena",
+              "duration": "3 hours",
+              "endTime": "05:00 PM"
+            },
+            {
+              "title": "E-Sports - Finals",
+              "category": "Gaming",
+              "venue": "Gaming Zone",
+              "duration": "3 hours",
+              "endTime": "05:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "03:00 PM",
+          "events": [
+            {
+              "title": "Fashion Show - Grand Finale",
+              "category": "Cultural",
+              "venue": "Main Stage",
+              "duration": "2 hours",
+              "endTime": "05:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "05:00 PM",
+          "events": [
+            {
+              "title": "Prize Distribution & Closing Ceremony",
+              "category": "General",
+              "venue": "Main Arena",
+              "duration": "2 hours",
+              "endTime": "07:00 PM"
+            }
+          ]
+        },
+        {
+          "time": "07:00 PM",
+          "events": [
+            {
+              "title": "EDM Spectacular",
+              "category": "Pronite",
+              "venue": "Main Arena",
+              "duration": "5 hours",
+              "endTime": "12:00 AM",
+              "featured": true,
+              "artists": "KSHMR, Lost Stories, Zaeden"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

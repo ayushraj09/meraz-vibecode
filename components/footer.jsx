@@ -2,6 +2,7 @@
 
 import { Sparkles, Mail, Phone, MapPin, Instagram, Twitter, Facebook, Youtube, Linkedin } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 import siteData from "@/data/site.json"
 
 export default function Footer() {
@@ -14,12 +15,12 @@ export default function Footer() {
   }
 
   const quickLinks = [
-    { label: "About", href: "#about" },
-    { label: "Events", href: "#events" },
-    { label: "Passes", href: "#passes" },
-    { label: "Schedule", href: "#schedule" },
-    { label: "Sponsors", href: "#sponsors" },
-    { label: "FAQs", href: "#faqs" },
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Events", href: "/events" },
+    { label: "Pronites", href: "/pronites" },
+    { label: "Schedule", href: "/schedule" },
+    { label: "Passes", href: "/passes" },
   ]
 
   return (
@@ -53,12 +54,12 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <a href="#home" className="flex items-center gap-2 mb-4">
+            <Link href="/" className="flex items-center gap-2 mb-4">
               <Sparkles className="w-6 h-6 text-[var(--galaxy-purple)]" />
               <span className="text-2xl font-bold gradient-text">
                 {siteData.festival.name}
               </span>
-            </a>
+            </Link>
             <p className="text-muted-foreground mb-4 leading-relaxed">
               {siteData.festival.tagline}
             </p>
@@ -73,12 +74,12 @@ export default function Footer() {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-muted-foreground hover:text-[var(--galaxy-purple)] transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

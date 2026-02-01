@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Calendar, MapPin, Rocket, Stars } from "lucide-react"
+import Link from "next/link"
 import siteData from "@/data/site.json"
 
 function CountdownTimer({ targetDate }) {
@@ -59,7 +60,7 @@ function CountdownTimer({ targetDate }) {
   )
 }
 
-export default function Hero() {
+export default function Hero({ onRegisterClick }) {
   return (
     <section
       id="home"
@@ -130,6 +131,7 @@ export default function Hero() {
           <Button
             size="lg"
             className="bg-[var(--galaxy-purple)] hover:bg-[var(--galaxy-purple)]/80 text-white px-8 py-6 text-lg animate-pulse-glow"
+            onClick={onRegisterClick}
           >
             <Rocket className="w-5 h-5 mr-2" />
             Register Now
@@ -138,8 +140,11 @@ export default function Hero() {
             size="lg"
             variant="outline"
             className="border-[var(--galaxy-cyan)] text-[var(--galaxy-cyan)] hover:bg-[var(--galaxy-cyan)] hover:text-white px-8 py-6 text-lg bg-transparent"
+            asChild
           >
-            Explore Events
+            <Link href="/events">
+              Explore Events
+            </Link>
           </Button>
         </div>
       </div>
