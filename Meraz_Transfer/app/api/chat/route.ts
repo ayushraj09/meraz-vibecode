@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { OpenRouter } from '@openrouter/sdk'
 
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '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'
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY'
 
 const openrouter = new OpenRouter({
   apiKey: OPENROUTER_API_KEY,
